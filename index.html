@@ -16,54 +16,105 @@
 
     <!-- Moment.js -->
     <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <!-- Styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #333;
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        main {
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Third-Party Libraries Example</h1>
+    <header>
+        <h1>Third-Party Libraries Example</h1>
+    </header>
 
-    <!-- jQuery Example -->
-    <script>
-        $(document).ready(function(){
-            // jQuery code goes here
-            console.log("jQuery is ready!");
-        });
-    </script>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
 
-    <!-- Chart.js Example -->
-    <canvas id="myChart" width="400" height="400"></canvas>
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            }
-        });
-    </script>
+    <main>
+        <!-- Content Goes Here -->
 
-    <!-- Axios Example -->
-    <script>
-        axios.get('https://jsonplaceholder.typicode.com/todos/1')
-            .then(function (response) {
-                console.log(response.data);
-            })
-            .catch(function (error) {
-                console.error(error);
+        <!-- jQuery Example -->
+        <script>
+            $(document).ready(function(){
+                // jQuery code goes here
+                console.log("jQuery is ready!");
             });
-    </script>
+        </script>
 
-    <!-- Moment.js Example -->
-    <script>
-        var today = moment();
-        console.log(today.format('MMMM Do YYYY, h:mm:ss a'));
-    </script>
+        <!-- Chart.js Example -->
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                }
+            });
+        </script>
+
+        <!-- Axios Example -->
+        <script>
+            axios.get('https://jsonplaceholder.typicode.com/todos/1')
+                .then(function (response) {
+                    console.log(response.data);
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        </script>
+
+        <!-- Moment.js Example -->
+        <script>
+            var today = moment();
+            console.log(today.format('MMMM Do YYYY, h:mm:ss a'));
+        </script>
+    </main>
 
 </body>
 </html>
