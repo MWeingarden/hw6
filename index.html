@@ -8,23 +8,17 @@
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- jQuery -->
+    <!-- Third-party libraries -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-    <!-- Popper.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <!-- Moment.js -->
     <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 
     <!-- Styles -->
     <style>
@@ -63,6 +57,13 @@
         main {
             padding: 20px;
         }
+
+        /* Additional styles can be added here for specific chart containers */
+        .chart-container {
+            width: 400px;
+            height: 400px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -74,29 +75,14 @@
     <!-- Bootstrap Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Example 1</a>
+            <a class="navbar-brand" href="/">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="teams.php">Example 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="players.php">Example 3</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="teams-with-players.php">Example 4</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
     <main>
-        <!-- Content Goes Here -->
-
         <!-- jQuery Example -->
         <script>
             $(document).ready(function(){
@@ -106,7 +92,9 @@
         </script>
 
         <!-- Chart.js Example -->
-        <canvas id="myChart" width="400" height="400"></canvas>
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
         <script>
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
@@ -141,8 +129,8 @@
             console.log(today.format('MMMM Do YYYY, h:mm:ss a'));
         </script>
         
-        <div id="plotlyChart" style="width: 400px; height: 400px;"></div>
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <!-- Plotly.js Example -->
+        <div class="chart-container" id="plotlyChart"></div>
         <script>
             var trace = {
                 x: [1, 2, 3, 4],
@@ -150,17 +138,14 @@
                 mode: 'markers',
                 type: 'scatter'
             };
-        
             var data = [trace];
-        
             Plotly.newPlot('plotlyChart', data);
         </script>
         
-                <div id="d3Chart" style="width: 400px; height: 400px;"></div>
-        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <!-- D3.js Example -->
+        <div class="chart-container" id="d3Chart"></div>
         <script>
             var data = [4, 8, 15, 16, 23, 42];
-        
             var svg = d3.select("#d3Chart").append("svg")
                 .attr("width", 400)
                 .attr("height", 400)
@@ -172,9 +157,8 @@
                 .attr("y", function (d, i) { return i * 50; });
         </script>
         
-                <div class="ct-chart" id="chartistChart"></div>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-        <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+        <!-- Chartist.js Example -->
+        <div class="chart-container" id="chartistChart"></div>
         <script>
             var data = {
                 labels: [1, 2, 3, 4],
@@ -182,7 +166,6 @@
                     [5, 2, 8, 3]
                 ]
             };
-        
             var options = {
                 high: 10,
                 low: 0,
@@ -191,7 +174,6 @@
                     onlyInteger: true
                 }
             };
-        
             new Chartist.Line('#chartistChart', data, options);
         </script>
     </main>
