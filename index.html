@@ -140,6 +140,60 @@
             var today = moment();
             console.log(today.format('MMMM Do YYYY, h:mm:ss a'));
         </script>
+        
+        <div id="plotlyChart" style="width: 400px; height: 400px;"></div>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script>
+            var trace = {
+                x: [1, 2, 3, 4],
+                y: [10, 15, 13, 17],
+                mode: 'markers',
+                type: 'scatter'
+            };
+        
+            var data = [trace];
+        
+            Plotly.newPlot('plotlyChart', data);
+        </script>
+        
+                <div id="d3Chart" style="width: 400px; height: 400px;"></div>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script>
+            var data = [4, 8, 15, 16, 23, 42];
+        
+            var svg = d3.select("#d3Chart").append("svg")
+                .attr("width", 400)
+                .attr("height", 400)
+                .selectAll("rect")
+                .data(data)
+                .enter().append("rect")
+                .attr("width", function (d) { return d * 10; })
+                .attr("height", 40)
+                .attr("y", function (d, i) { return i * 50; });
+        </script>
+        
+                <div class="ct-chart" id="chartistChart"></div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+        <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+        <script>
+            var data = {
+                labels: [1, 2, 3, 4],
+                series: [
+                    [5, 2, 8, 3]
+                ]
+            };
+        
+            var options = {
+                high: 10,
+                low: 0,
+                showArea: true,
+                axisY: {
+                    onlyInteger: true
+                }
+            };
+        
+            new Chartist.Line('#chartistChart', data, options);
+        </script>
     </main>
 
 </body>
